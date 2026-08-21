@@ -1,0 +1,6 @@
+# Core dependencies - AHMAD0.py original
+requests
+beautifulsoup4
+
+# ClonerHunter is zero-dependency (stdlib only)
+# No additional requirements needed for defensive scanner

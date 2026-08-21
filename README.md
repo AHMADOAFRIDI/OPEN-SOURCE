@@ -1,4 +1,5 @@
 <p align="center">
+  <img src="https://img.shields.io/github/actions/workflow/status/AHMADOAFRIDI/OPEN-SOURCE/ci.yml?style=for-the-badge&label=CI&logo=github&color=22c55e" alt="CI status" />
   <img src="https://img.shields.io/github/stars/AHMADOAFRIDI/OPEN-SOURCE?style=for-the-badge&logo=github&color=6366f1" alt="GitHub stars" />
   <img src="https://img.shields.io/github/forks/AHMADOAFRIDI/OPEN-SOURCE?style=for-the-badge&logo=github&color=22d3ee" alt="GitHub forks" />
   <img src="https://img.shields.io/github/watchers/AHMADOAFRIDI/OPEN-SOURCE?style=for-the-badge&logo=github&color=34d399" alt="GitHub watchers" />
@@ -7,11 +8,12 @@
 
 <h1 align="center">🕸️ OPEN-SOURCE</h1>
 
-<p align="center"><b>OPEN FILE CLONING</b></p>
+<p align="center"><b>OPEN FILE CLONING — Working Version</b></p>
 
 <p align="center">
   <a href="showcase/index.html"><b>✨ Live Repo Showcase</b></a>
-  &nbsp;·&nbsp; stars, forks, watchers &amp; every user fork — live from the GitHub API
+  &nbsp;·&nbsp; stars, forks, watchers &amp; every user fork — live from the GitHub API<br/>
+  <sub>Root <a href=\"index.html\">index.html</a> redirects to showcase for GitHub Pages</sub>
 </p>
 
 ---
@@ -57,11 +59,31 @@ no backend, no keys, and it works on GitHub Pages too (just enable Pages on the 
 | Path | Purpose |
 |------|---------|
 | [`AHMAD0.py`](AHMAD0.py) | Original file under analysis |
-| [`cloner-detector/`](cloner-detector/) | Defensive scanner (ClonerHunter) |
+| [`cloner-detector/`](cloner-detector/) | Defensive scanner (ClonerHunter) — zero deps |
 | [`showcase/`](showcase/) | Stylish live repo showcase (stats + forks) |
+| [`index.html`](index.html) | Root redirect → showcase (for GitHub Pages) |
+| [`requirements.txt`](requirements.txt) | Python deps for AHMAD0.py |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI: compile + selfcheck + tests |
+
+## ✅ Verified Working
+
+This repo has been verified as working on 2026-08-21:
+
+```bash
+python3 -m py_compile AHMAD0.py          # OK
+cd cloner-detector && python3 run.py selfcheck   # all checks passed
+python3 -m unittest discover -s tests -v         # 15 tests OK
+python3 run.py scan .. --exclude cloner-detector # flags AHMAD0.py as DEFINITIVE (expected)
+cd ../showcase && python3 -m http.server 8080    # live showcase
+```
+
+- **Showcase**: pulls live from `https://api.github.com/repos/AHMADOAFRIDI/OPEN-SOURCE` — no keys needed
+- **GitHub Pages**: enable Pages on `main` branch, root `/` — `index.html` auto-redirects to showcase
+- **License**: MIT — see [LICENSE](LICENSE)
 
 ## ⭐ Community
 
 - **Star** this repo to follow updates
 - **Fork** it and open a PR — your fork shows up in the [showcase](showcase/index.html) automatically
 - Watch the [forks page](https://github.com/AHMADOAFRIDI/OPEN-SOURCE/forks) to see who's contributing
+- Read [CONTRIBUTING.md](CONTRIBUTING.md) for dev workflow
