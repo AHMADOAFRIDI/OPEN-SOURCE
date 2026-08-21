@@ -1,9 +1,41 @@
 # Python
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
 .venv/
 venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+
+# Tool outputs
+/sdcard/
+*.txt
+!requirements.txt
+!cloner-detector/fixtures/*.txt
+!cloner-detector/fixtures/*.log
+.Hannan
+.rndm
+AHMADO-OK.txt
+AHMADO-CP.txt
+
+# Logs
+*.log
+!cloner-detector/fixtures/http_attack.log
 
 # OS
 .DS_Store
 Thumbs.db
+*.swp
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Showcase cache (localStorage used, but ignore any local builds)
+showcase/.cache/
