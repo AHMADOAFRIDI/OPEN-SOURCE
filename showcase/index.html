@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OPEN-SOURCE — Repo Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <header class="topbar">
+    <a class="brand" href="https://github.com/AHMADOAFRIDI/OPEN-SOURCE" target="_blank" rel="noopener">
+      <span class="brand-mark">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      </span>
+      <span class="brand-text">AHMADOAFRIDI <em>/</em> OPEN-SOURCE</span>
+    </a>
+    <div class="topbar-actions">
+      <span class="live-dot"></span>
+      <span class="live-label">Live from GitHub API</span>
+      <button id="refreshBtn" class="btn btn-ghost" title="Refresh data">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+        Refresh
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero card">
+      <div class="hero-left">
+        <img id="repoAvatar" class="avatar avatar-lg" src="" alt="repo avatar" />
+        <div>
+          <div class="hero-kicker" id="repoKicker">Loading…</div>
+          <h1 class="hero-title" id="repoName">OPEN-SOURCE</h1>
+          <p class="hero-desc" id="repoDesc">OPEN FILE CLONING</p>
+          <div class="hero-meta" id="repoMeta">
+            <span class="chip chip-primary"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg> View on GitHub</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <a class="btn btn-primary" id="repoLink" href="https://github.com/AHMADOAFRIDI/OPEN-SOURCE" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          Open Repository
+        </a>
+        <a class="btn btn-primary" id="forksLink" href="https://github.com/AHMADOAFRIDI/OPEN-SOURCE/forks" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18V15a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v3"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="6" r="2"/></svg>
+          See All Forks
+        </a>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats" id="statsGrid">
+      <div class="stat card skeleton"></div>
+      <div class="stat card skeleton"></div>
+      <div class="stat card skeleton"></div>
+      <div class="stat card skeleton"></div>
+      <div class="stat card skeleton"></div>
+      <div class="stat card skeleton"></div>
+      <div class="stat card skeleton"></div>
+      <div class="stat card skeleton"></div>
+    </section>
+
+    <!-- FORKS -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Users' Forks</h2>
+          <p class="section-sub">Everyone who forked this repository, live from GitHub.</p>
+        </div>
+        <div class="section-tools">
+          <input id="forkSearch" class="search" type="search" placeholder="Search forks…" autocomplete="off" />
+          <button id="sortBtn" class="btn btn-ghost" title="Toggle sort">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5h10"/><path d="M11 9h7"/><path d="M11 13h4"/><path d="M3 17l3 3 3-3"/><path d="M6 20V4"/></svg>
+            <span id="sortLabel">Newest</span>
+          </button>
+        </div>
+      </div>
+      <div class="fork-grid" id="forkGrid">
+        <div class="fork card skeleton"></div>
+        <div class="fork card skeleton"></div>
+        <div class="fork card skeleton"></div>
+        <div class="fork card skeleton"></div>
+        <div class="fork card skeleton"></div>
+        <div class="fork card skeleton"></div>
+      </div>
+      <div id="forkEmpty" class="empty hidden">
+        <div class="empty-icon">🔍</div>
+        <p>No forks match your search.</p>
+      </div>
+      <div class="fork-foot">
+        <span id="forkCount">Loading forks…</span>
+        <a id="forksLink2" class="link" href="https://github.com/AHMADOAFRIDI/OPEN-SOURCE/forks" target="_blank" rel="noopener">View all on GitHub →</a>
+      </div>
+    </section>
+
+    <!-- CONTRIBUTORS -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Contributors</h2>
+          <p class="section-sub">The people building this project.</p>
+        </div>
+      </div>
+      <div class="contrib-grid" id="contribGrid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built with <span class="heart">♥</span> — data served by the <a class="link" href="https://docs.github.com/en/rest" target="_blank" rel="noopener">GitHub REST API</a></p>
+  </footer>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>
